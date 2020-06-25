@@ -1,0 +1,21 @@
+<h1><%=@instructor.name%></h1>
+
+Students:
+<ul>
+    <%student_array = @instructor.students.sort_by {|student|student.name}%>
+        <%student_array.each do |student|%>
+            <li>
+                <%=link_to student.name, student_path(student)%>
+            </li>
+        <%end%>
+</ul>
+
+Average Student Age: 
+<%if @instructor.students.length > 0 %>
+    <%=@instructor.students.map {|student| student.age}.sum / @instructor.students.length %>
+<%end%>
+
+
+
+
+
